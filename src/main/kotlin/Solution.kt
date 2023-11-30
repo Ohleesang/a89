@@ -26,15 +26,10 @@ class Solution {
         var tempMaps = buyerMaps.filter{true}.toMutableMap()
         var count = 0
         for(day in 1..discount.size){
-            for(i in day-1..day-1+10){
+            for(i in day-1..day-1+9){
 
                 if(i >= discount.size) break //indexOf 방지
                 if(tempMaps.contains(discount[i])) {
-                    //가입 할 경우 처리
-                    if (count >= 10) {
-                        answer++
-                        break
-                    }
 
                     // 하나씩 차감
                     tempMaps[discount[i]] = tempMaps[discount[i]]!! - 1
@@ -47,13 +42,12 @@ class Solution {
                     //모든 조건 충족하면 count
                     count++
                 }
-                //가입 할 경우 처리
-                if(count>=10) {
-                    answer++
-                }
 
             }
-
+            //가입 할 경우 처리
+            if (count >= 10) {
+                answer++
+            }
 
             //각 값들 초기화
             count = 0
